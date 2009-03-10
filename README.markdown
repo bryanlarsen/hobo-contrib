@@ -28,10 +28,26 @@ You then need to include the taglib, e.g. in application.dryml:
 
 In the future, some tags may have additional install requirements.
 
+Alternatively, you may wish to only include certain tags.  In that
+case you may use a form such as:
+
+    <include src="select-one-or-field-list" plugin="hobo-contrib"/>
+
+If you use this form, you will also have to include any possible
+javascript or stylesheet assets manually:
+
+    <extend tag="page">
+       <old-page merge>
+         <append-head:>
+           <javascript name="select-one-or-field-list.javascript" />
+         </append-head:>
+       </old-page>
+    </extend>
+
 ## Contributing
 
 If the end user will have to edit your tag before use, please create a
-[recipe](http://cookbook.hobocentral.net/recipes).
+[recipe](http://cookbook.hobocentral.net/recipes) instead.
 
 If your tag is small and self contained, please send
 [me](http://github.com/bryanlarsen) a pull request or an email.
