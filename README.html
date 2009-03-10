@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC
+    "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
+    "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
+<html xmlns:svg='http://www.w3.org/2000/svg' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head><meta content='application/xhtml+xml;charset=utf-8' http-equiv='Content-type' /><title>Hobo Contrib</title></head>
+<body>
+<h1 id='hobo_contrib'>Hobo Contrib</h1>
+
+<p>This is a simple Rails plugin that works with <a href='http://hobocentral.net'>Hobo</a>.</p>
+
+<p>It consists of a variety of tags that can be used unchanged with Hobo. Each tag is too small to warrant the overhead of being a separate plugin.</p>
+
+<p>Any tag in this library may become part of Hobo in the future, if <a href='http://github.com/tablatom'>Tom Locke</a> so ordains.</p>
+
+<h2 id='installing'>Installing</h2>
+
+<p>Install with</p>
+
+<pre><code>ruby script/plugin install git://github.com/bryanlarsen/hobo-contrib.git</code></pre>
+
+<p>The plugin has an install script which will copy some assets to your public directory. The install scripts concatenate all javascripts into hobo-contrib.js and stylesheets into hobo-controb.css. If you wish to use the individual files, they are available in vendor/plugins/hobo-contrib/public.</p>
+
+<p>You then need to include the taglib, e.g. in application.dryml:</p>
+
+<pre><code>&lt;include src=&quot;hobo-contrib-all&quot; plugin=&quot;hobo-contrib&quot;/&gt;</code></pre>
+
+<p>In the future, some tags may have additional install requirements.</p>
+
+<p>Alternatively, you may wish to only include certain tags. In that case you may use a form such as:</p>
+
+<pre><code>&lt;include src=&quot;select-one-or-field-list&quot; plugin=&quot;hobo-contrib&quot;/&gt;</code></pre>
+
+<p>If you use this form, you will also have to include any possible javascript or stylesheet assets manually:</p>
+
+<pre><code>&lt;extend tag=&quot;page&quot;&gt;
+   &lt;old-page merge&gt;
+     &lt;append-head:&gt;
+       &lt;javascript name=&quot;select-one-or-field-list&quot; /&gt;
+     &lt;/append-head:&gt;
+   &lt;/old-page&gt;
+&lt;/extend&gt;</code></pre>
+
+<h2 id='contributing'>Contributing</h2>
+
+<p>If the end user will have to edit your tag before use, please create a <a href='http://cookbook.hobocentral.net/recipes'>recipe</a> instead.</p>
+
+<p>If your tag is small and self contained, please send <a href='http://github.com/bryanlarsen'>me</a> a pull request or an email.</p>
+
+<p>If your contribution is large or has external dependencies, please create your own plugin and send me the link.</p>
+
+<h2 id='documentation'>Documentation</h2>
+
+<p><a href='http://bryanlarsen.github.com/hobo-contrib/documentation.html'>Auto generated documentation</a>.</p>
+
+<h2 id='other_hobo_plugins'>Other Hobo Plugins</h2>
+
+<ul>
+<li><a href='http://github.com/tablatom/hoboyui/tree/master'>Hobo YUI</a></li>
+
+<li><a href='http://github.com/tablatom/paperclip_with_hobo/tree/master'>Paperclip with Hobo</a></li>
+</ul>
+
+<h2 id='possibly_out_of_date_plugins'>Possibly out of date plugins</h2>
+
+<ul>
+<li><a href='http://github.com/al2o3cr/hobo_has_many_polymorphs/tree/master'>Hobo has_many_polymporphs</a></li>
+
+<li><a href='http://github.com/hallettj/openid_authentication_for_hobo/tree/master'>open_id_authentication_for_hobo</a></li>
+</ul>
+</body></html>
