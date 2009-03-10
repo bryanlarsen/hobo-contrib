@@ -18,8 +18,8 @@ Install with
 
 The plugin has an install script which will copy some assets to your
 public directory.  The install scripts concatenate all javascripts
-into hobo-contrib.javascript and stylesheets into hobo-controb.css.
-If you wish to use the individual files, they are available in
+into hobo-contrib.js and stylesheets into hobo-controb.css.  If you
+wish to use the individual files, they are available in
 vendor/plugins/hobo-contrib/public.
     
 You then need to include the taglib, e.g. in application.dryml:
