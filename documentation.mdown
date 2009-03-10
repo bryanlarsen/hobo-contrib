@@ -1,0 +1,102 @@
+# count-all.dryml
+
+A couple of counting tags
+
+## count-all
+
+A convenience tag to output a sum of counts and a correctly pluralised label. Works with any type of collection.
+
+### Usage
+
+`&lt;count-all:comments attribute="votes"/&gt; -&gt; &lt;span class="count"&gt;17 Votes&lt;/span&gt;`
+
+If no `label` is passed, the attribute is used as the label.
+
+All attributes are passed to `&lt;count&gt;` unchanged, including `label`, `prefix`, `if-any` and `lowercase`
+
+### Source
+
+`&lt;def attrs='attribute, label' tag='count-all'&gt;
+  &lt;%
+    count = this.inject(0) \{|total, item|
+      val = item.send(attribute)
+      # inspired by rapid\_core.dryml:497
+      total + (val.try.to\_int || val.try.total\_entries || (val.try.loaded? &amp;&amp; val.try.length) || val.try.count || val.try.length)
+    \}
+
+    label ||= attribute.singularize.humanize
+  %&gt;
+
+  &lt;count label='&amp;label' merge-attrs with='&amp;count'/&gt;
+&lt;/def&gt;`
+
+## sum
+
+A convenience tag to output a sum of attribute values. Works with any type of collection.
+
+### Usage
+
+`&lt;sum:comments attribute="score"/&gt; -&gt; 42`
+
+### Source
+
+`&lt;def attrs='attribute' tag='sum'&gt;
+  &lt;%=
+    this.inject(nil) \{|total, item|
+      val = item.send(attribute)
+      c = val.try.+(0) || val.try.total\_entries || (val.try.loaded? &amp;&amp; val.try.length) || val.try.count || val.try.length
+      if total.nil?
+        c
+      else
+        total+c
+      end
+    \}
+
+  %&gt;
+&lt;/def&gt;`
+
+# select-one-or-field-list.dryml
+
+## select-one-or-field-list
+
+a _select-one_ and a _field-list_ for the same object. If “New Foo” is selected, the field-list is displayed, otherwise it is disabled and hidden.
+
+### Parameters
+
+* select-one
+* field-list
+
+### Source
+
+`&lt;def tag='select-one-or-field-list'&gt;
+  &lt;div class='select-one-or-field-list'&gt;
+    &lt;select-one merge class='select-one-or-field-list-select' param blank-message='&amp;&amp;apos;New
+&amp;apos;+this\_field.titleize' include-none/&gt;
+    &lt;field-list param/&gt;
+  &lt;/div&gt;
+&lt;/def&gt;`
+
+# belongs-to-slide-editor.dryml
+
+## belongs-to-slide-editor
+
+Displays a belongs\_to object. If you click on the object, a form slides open to allow you to edit the object. When done, the form slides back up.
+
+Created by David Mathers.
+
+### Parameters
+
+* anchor
+* form
+
+### Source
+
+`&lt;def tag='belongs-to-slide-editor'&gt;
+  &lt;div id='view-#\{typed\_id\}' part='slide-editor-view'&gt;
+    &lt;a action='edit' param='anchor' onclick='Effect.toggle(&amp;apos;form-#\{typed\_id\}&amp;apos;, &amp;apos;blind&amp;apos;); return false;'/&gt;
+  &lt;/div&gt;
+  &lt;div id='form-#\{typed\_id\}' style='display: none'&gt;
+    &lt;form param='form' success='Hobo.hide(&amp;apos;form-#\{typed\_id\}&amp;apos;);' update='view-#\{typed\_id\}'/&gt;
+  &lt;/div&gt;
+&lt;/def&gt;`
+
