@@ -66,6 +66,6 @@ create your own plugin and send me the link.
 
 ## Possibly out of date plugins
 
-* [Hobo has_many_polymporphs](http://github.com/al2o3cr/hobo_has_many_polymorphs/tree/master)
-* [open_id_authentication_for_hobo](http://github.com/hallettj/openid_authentication_for_hobo/tree/master)
+* [Hobo has\_many\_polymporphs](http://github.com/al2o3cr/hobo_has_many_polymorphs/tree/master)
+* [open\_id\_authentication\_for\_hobo](http://github.com/hallettj/openid_authentication_for_hobo/tree/master)
 
