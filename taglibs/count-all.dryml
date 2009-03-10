@@ -1,0 +1,49 @@
+<!--  A couple of counting tags --> 
+
+<!--
+A convenience tag to output a sum of counts and a correctly pluralised label.  Works with any type of collection.
+
+### Usage
+
+    <count-all:comments attribute="votes"/> -> <span class="count">17 Votes</span>
+
+If no `label` is passed, the attribute is used as the label.
+
+All attributes are passed to `<count>` unchanged, including `label`, `prefix`, `if-any` and `lowercase`
+-->
+<def tag="count-all" attrs="attribute, label">
+  <%
+    count = this.inject(0) {|total, item|
+      val = item.send(attribute)
+      # inspired by rapid_core.dryml:497
+      total + (val.try.to_int || val.try.total_entries || (val.try.loaded? && val.try.length) || val.try.count || val.try.length)
+    }
+
+    label ||= attribute.singularize.humanize
+  %>
+
+  <count with="&count" label="&label" merge-attrs />
+</def>
+    
+<!--
+A convenience tag to output a sum of attribute values.  Works with any type of collection.
+
+### Usage
+
+    <sum:comments attribute="score"/> -> 42
+
+-->
+<def tag="sum" attrs="attribute">
+  <%=
+    this.inject(nil) {|total, item|
+      val = item.send(attribute)
+      c = val.try.+(0) || val.try.total_entries || (val.try.loaded? && val.try.length) || val.try.count || val.try.length
+      if total.nil?
+        c
+      else
+        total+c
+      end
+    }
+
+  %>
+</def>

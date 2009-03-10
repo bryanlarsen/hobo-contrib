@@ -1,0 +1,16 @@
+<!-- -->
+
+<!--
+
+ a _select-one_ and a _field-list_ for the same object.  If "New Foo" is selected,
+the field-list is displayed, otherwise it is disabled and hidden.  
+
+-->
+<def tag="select-one-or-field-list">
+  <div class="select-one-or-field-list">
+    <select-one include-none blank-message="&'New
+'+this_field.titleize" class="select-one-or-field-list-select" merge
+param />
+    <field-list param />
+  </div>
+</def> 

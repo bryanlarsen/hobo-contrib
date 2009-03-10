@@ -1,0 +1,40 @@
+<include src="core" plugin="hobo/hobo"/>
+<include src="rapid" plugin="hobo/hobo"/>
+
+<def tag="param-list" >
+  <ul if="&this.any?">
+    <% this.each {|param| %>
+      <li><%= param.first %>
+        <param-list with="&param.last"/>
+      </li>
+    <% } %>
+  </ul>
+</def>
+  
+
+<html>
+  <body>
+    <!-- unfortunately, <repeat> is problematic here -->
+    <% this.each {|taglib| %>
+      <h1><%= taglib.name %>.dryml</h1>
+      <%= taglib.comment_html %>
+      <% taglib.tag_defs.each {|tag| %>
+
+        <h2><%= tag.name %></h2>
+
+        <%= tag.comment_intro_html %>
+
+        <% if !tag.parameters.empty? %>
+          <h3>Parameters</h3>
+          <param-list with="&tag.parameters"/>
+        <% end %>
+
+        <%= tag.comment_rest_html %>
+
+        <h3>Source</h3>
+        <pre><code><%= h tag.source %></code></pre>
+
+      <% } %>
+    <% } %>
+  </body>
+</html>
