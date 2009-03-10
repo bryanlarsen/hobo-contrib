@@ -6,11 +6,15 @@
 
 desc "generate documentation"
 file "../hobo-contrib-gh-pages/documentation.html" => ["#{RAILS_ROOT}/app/views/taglibs/doc_generator.dryml", :environment]+Dir["#{RAILS_ROOT}/../hobo-contrib/taglibs/**/*.dryml"] do |t|
-  taglibs = Dir["#{RAILS_ROOT}/../hobo-contrib/taglibs/**/*.dryml"].map {|filename|
+  
+  require 'maruku'
+
+  taglibs = Dir["#{RAILS_ROOT}/../hobo-contrib/taglibs/**/*.dryml"].reject {|filename|
+    File.basename(filename).match(/^hobo-contrib-.*/)
+  }.map {|filename|
     Hobo::Dryml::DrymlDoc::Taglib.new("#{RAILS_ROOT}/../hobo-contrib/taglibs", filename)
   }
 
-  require 'maruku'
   src = open(t.prerequisites.first).read
   locals = []
   imports = []
