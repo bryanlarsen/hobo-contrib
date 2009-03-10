@@ -1,5 +1,11 @@
+<def tag="hobo-contrib-assets">
+  <javascript name="hobo-contrib"/>
+  <stylesheet name="hobo-contrib"/>
+</def>
+
 <extend tag="page">
   <old-page merge>
     <append-head:><hobo-contrib-assets/></append-head:>
   </old-page>
 </extend>
+

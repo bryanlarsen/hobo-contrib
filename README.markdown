@@ -39,7 +39,7 @@ javascript or stylesheet assets manually:
     <extend tag="page">
        <old-page merge>
          <append-head:>
-           <javascript name="select-one-or-field-list.javascript" />
+           <javascript name="select-one-or-field-list" />
          </append-head:>
        </old-page>
     </extend>
