@@ -1,0 +1,4 @@
+<include src="belongs-to-slide-editor.dryml" plugin="hobo-contrib" />
+<include src="count-all.dryml" plugin="hobo-contrib" />
+<include src="hobo-contrib-assets.dryml" plugin="hobo-contrib" />
+<include src="select-one-or-field-list.dryml" plugin="hobo-contrib" />
