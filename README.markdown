@@ -15,12 +15,18 @@ Any tag in this library may become part of Hobo in the future, if
 Install with
 
     ruby script/plugin install git://github.com/bryanlarsen/hobo-contrib.git
+
+The plugin has an install script which will copy some assets to your
+public directory.  The install scripts concatenate all javascripts
+into hobo-contrib.javascript and stylesheets into hobo-controb.css.
+If you wish to use the individual files, they are available in
+vendor/plugins/hobo-contrib/public.
     
 You then need to include the taglib, e.g. in application.dryml:
 
     <include src="hobo-contrib-all" plugin="hobo-contrib"/>
 
-Some tags may have additional install requirements.
+In the future, some tags may have additional install requirements.
 
 ## Contributing
 
@@ -33,13 +39,17 @@ If your tag is small and self contained, please send
 If your contribution is large or has external dependencies, please
 create your own plugin and send me the link.
 
+## Documentation
+
+[Auto generated documentation](http://bryanlarsen.github.com/hobo-contrib/documentation.html).
+
 ## Other Hobo Plugins
 
-[Hobo YUI](http://github.com/tablatom/hoboyui/tree/master)
-[Paperclip with Hobo](http://github.com/tablatom/paperclip_with_hobo/tree/master)
+* [Hobo YUI](http://github.com/tablatom/hoboyui/tree/master)
+* [Paperclip with Hobo](http://github.com/tablatom/paperclip_with_hobo/tree/master)
 
 ## Possibly out of date plugins
 
-[Hobo has_many_polymporphs](http://github.com/al2o3cr/hobo_has_many_polymorphs/tree/master)
-[open_id_authentication_for_hobo](http://github.com/hallettj/openid_authentication_for_hobo/tree/master)
+* [Hobo has_many_polymporphs](http://github.com/al2o3cr/hobo_has_many_polymorphs/tree/master)
+* [open_id_authentication_for_hobo](http://github.com/hallettj/openid_authentication_for_hobo/tree/master)
 

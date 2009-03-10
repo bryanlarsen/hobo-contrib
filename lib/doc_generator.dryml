@@ -14,6 +14,11 @@
 
 <html>
   <body>
+    <p> This is the automatically generated documentation for
+    hobo-contrib.  If you want to help make it prettier, edit
+    doc_generator.dryml. </p>
+
+
     <!-- unfortunately, <repeat> is problematic here -->
     <% this.each {|taglib| %>
       <h1><%= taglib.name %>.dryml</h1>

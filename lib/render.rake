@@ -5,7 +5,7 @@
 #  doc_generator.dryml to app/views/taglibs in your skeleton
 
 desc "generate documentation"
-file "../hobo-contrib/documentation.mdown" => ["#{RAILS_ROOT}/app/views/taglibs/doc_generator.dryml", :environment]+Dir["#{RAILS_ROOT}/../hobo-contrib/taglibs/**/*.dryml"] do |t|
+file "../hobo-contrib-gh-pages/documentation.html" => ["#{RAILS_ROOT}/app/views/taglibs/doc_generator.dryml", :environment]+Dir["#{RAILS_ROOT}/../hobo-contrib/taglibs/**/*.dryml"] do |t|
   taglibs = Dir["#{RAILS_ROOT}/../hobo-contrib/taglibs/**/*.dryml"].map {|filename|
     Hobo::Dryml::DrymlDoc::Taglib.new("#{RAILS_ROOT}/../hobo-contrib/taglibs", filename)
   }
@@ -22,11 +22,6 @@ file "../hobo-contrib/documentation.mdown" => ["#{RAILS_ROOT}/app/views/taglibs/
   view.extend(Hobo::RapidHelper)
   renderer = renderer_class.new(File.basename(t.prerequisites.first, ".dryml"), view)
   page_locals = ""
-  htmlname = File.dirname(t.name)+"/"+File.basename(t.name, ".mdown")+".html"
-  f=open(htmlname, "w")
-  f.write(renderer.render_page(taglibs, page_locals).strip)
-  f.close  # important! or perl will fail!
-  sh "perl #{RAILS_ROOT}/../hobo-contrib/lib/html2markdown.pl #{RAILS_ROOT}/#{htmlname} > #{RAILS_ROOT}/#{t.name}"
-  sh "rm #{RAILS_ROOT}/#{htmlname}"
+  open(t.name, "w").write(renderer.render_page(taglibs, page_locals).strip)
 end
 
