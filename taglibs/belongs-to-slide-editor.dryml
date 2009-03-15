@@ -3,13 +3,13 @@
 <!--
   Displays a belongs\_to object.  If you click on the object, a form slides open to allow you to edit the object.  When done, the form slides back up. 
 
-  Created by David Mathers. 
+  Created by David Mathers and Bryan Larsen. 
 -->
 <def tag='belongs-to-slide-editor'>
   <div part="slide-editor-view" id="view-#{typed_id}">
     <!-- giving the href parameter to a turns off the magic -->
     <a action="edit" onclick="Effect.toggle('form-#{typed_id}', 'blind'); return false;" href="">
-      <view/>
+      <name/>
     </a>
   </div>
   <div id="form-#{typed_id}" style="display: none" >
