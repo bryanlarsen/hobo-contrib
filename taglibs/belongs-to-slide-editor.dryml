@@ -7,7 +7,10 @@
 -->
 <def tag='belongs-to-slide-editor'>
   <div part="slide-editor-view" id="view-#{typed_id}">
-    <a action="edit" onclick="Effect.toggle('form-#{typed_id}', 'blind'); return false;" param="anchor" />
+    <!-- giving the href parameter to a turns off the magic -->
+    <a action="edit" onclick="Effect.toggle('form-#{typed_id}', 'blind'); return false;" href="">
+      <view/>
+    </a>
   </div>
   <div id="form-#{typed_id}" style="display: none" >
     <form update="view-#{typed_id}" success="Hobo.hide('form-#{typed_id}');" param="form" />
