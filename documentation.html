@@ -236,7 +236,27 @@
     
       <li>form
         
+  <ul>
+    
+      <li>field-list
+        
   
+
+      </li>
+    
+      <li>submit
+        
+  
+
+      </li>
+    
+      <li>or-cancel
+        
+  
+
+      </li>
+    
+  </ul>
 
       </li>
     
@@ -251,12 +271,15 @@
                 <pre><code>&lt;def tag='belongs-to-slide-editor'&gt;
   &lt;div id='view-#{typed_id}' part='slide-editor-view'&gt;
     &lt;!-- giving the href parameter to a turns off the magic --&gt;
-    &lt;a href='' action='edit' onclick='Effect.toggle(&amp;apos;form-#{typed_id}&amp;apos;, &amp;apos;blind&amp;apos;); return false;'&gt;
+    &lt;a href='' action='edit' onclick='Hobo.show(&amp;apos;form-#{typed_id}&amp;apos;); return false;'&gt;
       &lt;name/&gt;
     &lt;/a&gt;
   &lt;/div&gt;
-  &lt;div id='form-#{typed_id}' style='display: none'&gt;
-    &lt;form param='form' success='Hobo.hide(&amp;apos;form-#{typed_id}&amp;apos;);' update='view-#{typed_id}'/&gt;
+  &lt;div class='hidden' id='form-#{typed_id}'&gt;
+    &lt;form param success='Hobo.hide(&amp;apos;form-#{typed_id}&amp;apos;);' update='view-#{typed_id}'&gt;
+      &lt;field-list param/&gt;
+      &lt;submit param value='Save'/&gt;&lt;or-cancel href='' param onclick='Hobo.hide(&amp;apos;form-#{typed_id}&amp;apos;); return false;'/&gt;
+    &lt;/form&gt;
   &lt;/div&gt;
 &lt;/def&gt;</code></pre>
               </div>
