@@ -4,7 +4,7 @@
   Hobo does not allow parameters inside of parts, so to parameterize the view in <belongs-to-slide-editor> you can redefine this polymorphic tag for your type.
 -->
 <def tag="belongs-to-slide-editor-view" polymorphic >
-  <a action="edit" onclick="Hobo.show('form-#{typed_id}'); return false;" param >
+  <a action="edit" onclick="Hobo.show('form-#{typed_id}'); return false;" href="" param >
     <name />
   </a>
 </def>
