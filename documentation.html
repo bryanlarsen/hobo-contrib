@@ -19,6 +19,16 @@
         
           
   <li>
+    <a href="#belongs-to-slide-editor-taglib">
+      <span>
+        belongs-to-slide-editor
+      </span>
+    </a>
+  </li>
+
+        
+          
+  <li>
     <a href="#count-all-taglib">
       <span>
         count-all
@@ -37,18 +47,133 @@
   </li>
 
         
+      </ul>
+      <!-- unfortunately, <repeat> is problematic here -->
+      
+        <div class="taglib" id="belongs-to-slide-editor-taglib">
           
+          <ul>
+            
+              
   <li>
-    <a href="#belongs-to-slide-editor-taglib">
+    <a href="#belongs-to-slide-editor-view-tag">
+      <span>
+        belongs-to-slide-editor-view
+      </span>
+    </a>
+  </li>
+
+            
+              
+  <li>
+    <a href="#belongs-to-slide-editor-tag">
       <span>
         belongs-to-slide-editor
       </span>
     </a>
   </li>
 
+            
+          </ul>
+          
+            <div id="belongs-to-slide-editor-view-tag">
+          
+              <h2>belongs-to-slide-editor-view</h2>
+              
+              <p>Hobo does not allow parameters inside of parts, so to parameterize the view in <pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>HTML parse error: 
+&lt;belongs-to-slide-editor&gt; you can redefine this polymorphic tag for your type.</pre></p>
+          
+              
+                <h3>Parameters</h3>
+                
+  <ul>
+    
+      <li>a
         
-      </ul>
-      <!-- unfortunately, <repeat> is problematic here -->
+  
+
+      </li>
+    
+  </ul>
+
+              
+          
+              
+
+              <div class="source">
+                <h3><a href="#">Source</a></h3>
+                <pre><code>&lt;def polymorphic tag='belongs-to-slide-editor-view'&gt;
+  &lt;a href='' action='edit' param onclick='Hobo.show(&amp;apos;form-#{typed_id}&amp;apos;); return false;'&gt;
+    &lt;name/&gt;
+  &lt;/a&gt;
+&lt;/def&gt;</code></pre>
+              </div>
+          
+            </div>
+          
+            <div id="belongs-to-slide-editor-tag">
+          
+              <h2>belongs-to-slide-editor</h2>
+              
+              <p>Displays a belongs_to object. If you click on the object, a form slides open to allow you to edit the object. When done, the form slides back up.</p>
+
+<p>Created by David Mathers and Bryan Larsen.</p>
+          
+              
+                <h3>Parameters</h3>
+                
+  <ul>
+    
+      <li>form
+        
+  <ul>
+    
+      <li>field-list
+        
+  
+
+      </li>
+    
+      <li>submit
+        
+  
+
+      </li>
+    
+      <li>or-cancel
+        
+  
+
+      </li>
+    
+  </ul>
+
+      </li>
+    
+  </ul>
+
+              
+          
+              
+
+              <div class="source">
+                <h3><a href="#">Source</a></h3>
+                <pre><code>&lt;def tag='belongs-to-slide-editor'&gt;
+  &lt;div id='view-#{typed_id}' part='slide-editor-view'&gt;
+    &lt;belongs-to-slide-editor-view/&gt;
+  &lt;/div&gt;
+  &lt;div class='hidden' id='form-#{typed_id}'&gt;
+    &lt;form param success='Hobo.hide(&amp;apos;form-#{typed_id}&amp;apos;);' update='view-#{typed_id}'&gt;
+      &lt;field-list param/&gt;
+      &lt;submit param value='Save'/&gt;&lt;or-cancel href='' param onclick='Hobo.hide(&amp;apos;form-#{typed_id}&amp;apos;); return false;'/&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/def&gt;</code></pre>
+              </div>
+          
+            </div>
+          
+        </div>
       
         <div class="taglib" id="count-all-taglib">
           <p>A couple of counting tags</p>
@@ -197,89 +322,6 @@
     &lt;select-one merge class='select-one-or-field-list-select' param blank-message='&amp;&amp;apos;New
 &amp;apos;+this_field.titleize' include-none/&gt;
     &lt;field-list param/&gt;
-  &lt;/div&gt;
-&lt;/def&gt;</code></pre>
-              </div>
-          
-            </div>
-          
-        </div>
-      
-        <div class="taglib" id="belongs-to-slide-editor-taglib">
-          
-          <ul>
-            
-              
-  <li>
-    <a href="#belongs-to-slide-editor-tag">
-      <span>
-        belongs-to-slide-editor
-      </span>
-    </a>
-  </li>
-
-            
-          </ul>
-          
-            <div id="belongs-to-slide-editor-tag">
-          
-              <h2>belongs-to-slide-editor</h2>
-              
-              <p>Displays a belongs_to object. If you click on the object, a form slides open to allow you to edit the object. When done, the form slides back up.</p>
-
-<p>Created by David Mathers and Bryan Larsen.</p>
-          
-              
-                <h3>Parameters</h3>
-                
-  <ul>
-    
-      <li>form
-        
-  <ul>
-    
-      <li>field-list
-        
-  
-
-      </li>
-    
-      <li>submit
-        
-  
-
-      </li>
-    
-      <li>or-cancel
-        
-  
-
-      </li>
-    
-  </ul>
-
-      </li>
-    
-  </ul>
-
-              
-          
-              
-
-              <div class="source">
-                <h3><a href="#">Source</a></h3>
-                <pre><code>&lt;def tag='belongs-to-slide-editor'&gt;
-  &lt;div id='view-#{typed_id}' part='slide-editor-view'&gt;
-    &lt;!-- giving the href parameter to a turns off the magic --&gt;
-    &lt;a href='' action='edit' onclick='Hobo.show(&amp;apos;form-#{typed_id}&amp;apos;); return false;'&gt;
-      &lt;name/&gt;
-    &lt;/a&gt;
-  &lt;/div&gt;
-  &lt;div class='hidden' id='form-#{typed_id}'&gt;
-    &lt;form param success='Hobo.hide(&amp;apos;form-#{typed_id}&amp;apos;);' update='view-#{typed_id}'&gt;
-      &lt;field-list param/&gt;
-      &lt;submit param value='Save'/&gt;&lt;or-cancel href='' param onclick='Hobo.hide(&amp;apos;form-#{typed_id}&amp;apos;); return false;'/&gt;
-    &lt;/form&gt;
   &lt;/div&gt;
 &lt;/def&gt;</code></pre>
               </div>
