@@ -1,5 +1,14 @@
 <!-- -->
 
+<!-- 
+  Hobo does not allow parameters inside of parts, so to parameterize the view in <belongs-to-slide-editor> you can redefine this polymorphic tag for your type.
+-->
+<def tag="belongs-to-slide-editor-view" polymorphic >
+  <a action="edit" onclick="Hobo.show('form-#{typed_id}'); return false;" param >
+    <name />
+  </a>
+</def>
+
 <!--
   Displays a belongs\_to object.  If you click on the object, a form slides open to allow you to edit the object.  When done, the form slides back up. 
 
@@ -7,10 +16,7 @@
 -->
 <def tag='belongs-to-slide-editor'>
   <div part="slide-editor-view" id="view-#{typed_id}">
-    <!-- giving the href parameter to a turns off the magic -->
-    <a action="edit" onclick="Hobo.show('form-#{typed_id}'); return false;" href="">
-      <name/>
-    </a>
+    <belongs-to-slide-editor-view/>
   </div>
   <div id="form-#{typed_id}" class="hidden" >
     <form update="view-#{typed_id}" success="Hobo.hide('form-#{typed_id}');" param>
