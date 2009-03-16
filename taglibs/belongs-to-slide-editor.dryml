@@ -12,7 +12,7 @@
 <!--
   Displays a belongs\_to object.  If you click on the object, a form slides open to allow you to edit the object.  When done, the form slides back up. 
 
-  There's a worked up example in the contrib-test branch of the agility tutorial on github: http://github.com/tablatom/agility/blob/contrib-test/app/views/projects/belongs_to_slide_editor_test.dryml
+  There's a worked up example in the [contrib-test branch of the agility tutorial on github](http://github.com/tablatom/agility/blob/contrib-test/app/views/projects/belongs_to_slide_editor_test.dryml).
 
   Created by David Mathers and Bryan Larsen. 
 -->

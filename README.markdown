@@ -59,6 +59,10 @@ create your own plugin and send me the link.
 
 [Auto generated documentation](http://bryanlarsen.github.com/hobo-contrib/documentation.html).
 
+## Testing
+
+There are some additional tests available for this project in the [contrib-test branch of the agility tutorial on github](http://github.com/tablatom/agility/blob/contrib-test).
+
 ## Other Hobo Plugins
 
 * [Hobo YUI](http://github.com/tablatom/hoboyui/tree/master)
