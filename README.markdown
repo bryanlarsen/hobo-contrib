@@ -63,13 +63,3 @@ create your own plugin and send me the link.
 
 There are some additional tests available for this project in the [contrib-test branch of the agility tutorial on github](http://github.com/tablatom/agility/blob/contrib-test).
 
-## Other Hobo Plugins
-
-* [Hobo YUI](http://github.com/tablatom/hoboyui/tree/master)
-* [Paperclip with Hobo](http://github.com/tablatom/paperclip_with_hobo/tree/master)
-
-## Possibly out of date plugins
-
-* [Hobo has\_many\_polymporphs](http://github.com/al2o3cr/hobo_has_many_polymorphs/tree/master)
-* [open\_id\_authentication\_for\_hobo](http://github.com/hallettj/openid_authentication_for_hobo/tree/master)
-

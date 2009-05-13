@@ -3,6 +3,7 @@
   <stylesheet name="hobo-contrib"/>
 </def>
 
+<!-- nodoc -->
 <extend tag="page">
   <old-page merge>
     <append-head:><hobo-contrib-assets/></append-head:>
