@@ -1,8 +1,5 @@
-
-<!--  Include this file to include all of hobo-contrib -->
-
 <include src="belongs-to-slide-editor" plugin="hobo-contrib" />
 <include src="count-all" plugin="hobo-contrib" />
+<include src="feckless-fieldset" plugin="hobo-contrib" />
 <include src="hobo-contrib-assets" plugin="hobo-contrib" />
 <include src="select-one-or-field-list" plugin="hobo-contrib" />
-<include src="feckless-fieldset" plugin="hobo-contrib" />
