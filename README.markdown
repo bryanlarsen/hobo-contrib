@@ -25,7 +25,7 @@ vendor/plugins/hobo-contrib/public.
 If you download a new version of hobo-contrib, please be sure to
 update your local hobo-contrib.js and hobo-contrib.css with:
 
-    rake hobo_contrib:update_assets.
+    rake hobo_contrib:update_assets   
 
 This is also useful if you installed hobo-contrib via git rather than
 using script/plugin.
@@ -47,9 +47,9 @@ javascript or stylesheet assets manually:
          <append-head:>
            <javascript name="feckless-fieldset" />
          </append-head:>
-         <append-stylesheets:>   
+         <before-app-stylesheet:>   
            <stylesheet name='feckless-fieldset.css' />
-         </append-stylesheets:>
+         </before-app-stylesheet:>
        </old-page>
     </extend>
 

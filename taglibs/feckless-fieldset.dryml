@@ -14,8 +14,13 @@ Simple example:
       <feckless-fieldset class="vertical"/>
     </form>
 
+You can replace the standard field-list in all of your forms with feckless-fieldset:
 
-And a more complicated one that you may actually want to steal:
+    <extend tag="field-list">
+      <feckless-fieldset class="horizontal" merge/>
+    </extend>    
+
+A more complicated example that you may actually want to steal:
 
     <extend tag="signup-form" for="User">
       <old-signup-form >
