@@ -18,15 +18,21 @@ Install with
 
 The plugin has an install script which will copy some assets to your
 public directory.  The install scripts concatenate all javascripts
-into hobo-contrib.js and stylesheets into hobo-controb.css.  If you
+into hobo-contrib.js and stylesheets into hobo-contrib.css.  If you
 wish to use the individual files, they are available in
-vendor/plugins/hobo-contrib/public.
+vendor/plugins/hobo-contrib/public.  
+
+If you download a new version of hobo-contrib, please be sure to
+update your local hobo-contrib.js and hobo-contrib.css with:
+
+    rake hobo_contrib:update_assets.
+
+This is also useful if you installed hobo-contrib via git rather than
+using script/plugin.
     
 You then need to include the taglib, e.g. in application.dryml:
 
     <include src="hobo-contrib-all" plugin="hobo-contrib"/>
-
-In the future, some tags may have additional install requirements.
 
 Alternatively, you may wish to only include certain tags.  In that
 case you may use a form such as:
@@ -39,8 +45,11 @@ javascript or stylesheet assets manually:
     <extend tag="page">
        <old-page merge>
          <append-head:>
-           <javascript name="select-one-or-field-list" />
+           <javascript name="feckless-fieldset" />
          </append-head:>
+         <append-stylesheets:>   
+           <stylesheet name='feckless-fieldset.css' />
+         </append-stylesheets:>
        </old-page>
     </extend>
 
@@ -57,7 +66,9 @@ create your own plugin and send me the link.
 
 ## Documentation
 
-[Auto generated documentation](http://bryanlarsen.github.com/hobo-contrib/documentation.html).
+[Auto generated documentation on GitHub](http://bryanlarsen.github.com/hobo-contrib/documentation.html).
+
+[Auto generated documentation on HoboCentral](http://cookbook.hobocentral.net/plugins/hobo-contrib)
 
 ## Testing
 

@@ -1,0 +1,42 @@
+/* hobo-contrib/public/stylesheets/feckless-fieldset.css  */
+
+/* see: http://fecklessmind.com/2009/01/23/how-to-reliable-css-forms/ */
+
+/* put a class of 'vertical', 'horizontal' or 'inline-vertical' on
+your fieldset to choose your layout. */
+
+/* fieldset {clear: both;} */
+fieldset legend {padding: 0 0 1.286em; font-size: 1.167em; font-weight: 700;}
+fieldset fieldset legend {padding: 0 0 1.5em; font-size: 1em;}
+* html fieldset legend {margin-left: -7px;} /* ie6 */
+*+html fieldset legend {margin-left: -7px;} /* ie7 */
+
+fieldset .field, fieldset .buttons {/* clear: both; */ margin: 0 0 1.0em;}
+fieldset .field label, fieldset .field .input-help {display: block;}
+fieldset ul.fields {margin: 0 0 1.0em; padding: 0;}
+fieldset ul.fields li {list-style-type: none; margin: 0;}
+fieldset ul.inline li, fieldset ul.inline label {display: inline;}
+fieldset ul.inline li {padding: 0 .75em 0 0;}
+
+fieldset input.radio, fieldset input.checkbox {vertical-align: top;}
+fieldset label, fieldset button, fieldset input.submit, fieldset input.image {cursor: pointer;}
+* html fieldset input.radio, * html fieldset input.checkbox {vertical-align: middle;} /* ie6 */
+*+html fieldset input.radio, *+html fieldset input.checkbox {vertical-align: middle;} /* ie7 */
+
+
+fieldset textarea {overflow: auto;}
+fieldset input.text, fieldset input.string, fieldset input.email-address, fieldset ninput.password, fieldset textarea, fieldset select {margin: 0; font: 1em/1.3 Helvetica, Arial, "Liberation Sans", "Bitstream Vera Sans", sans-serif; vertical-align: baseline;}
+fieldset input.text, fieldset input.string, fieldset input.email-address, fieldset input.password, fieldset textarea {border: 1px solid #444; padding: 2px;}
+
+/* horizontal layout */
+fieldset.horizontal .field {padding-left: 150px; }
+fieldset.horizontal .field label {display: inline; float: left; width: 140px; margin-left: -150px; clear:none;}
+fieldset.horizontal .input-help { display: inline; margin-left: 0.5em; }
+
+/* inline vertical layout.  We make sure to undue all the fieldset.horizontal styles so that this can be nested inside a fieldset.horizontal */
+fieldset.inline-vertical .field {padding-left: 0; display: inline-block; float: none; margin-left: 0; clear: none; height:1%; *display:inline;}
+fieldset.inline-vertical .field label {display: block; float: none; width: 100%; margin-left: 0;}
+fieldset.inline-vertical .input-help { display: block; margin-left: 0; }
+
+fieldset .field.required label:before {content:"*"; color: red;}
+fieldset .field.required label {color: red;}
