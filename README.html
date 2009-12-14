@@ -19,13 +19,17 @@
 
 <pre><code>ruby script/plugin install git://github.com/bryanlarsen/hobo-contrib.git</code></pre>
 
-<p>The plugin has an install script which will copy some assets to your public directory. The install scripts concatenate all javascripts into hobo-contrib.js and stylesheets into hobo-controb.css. If you wish to use the individual files, they are available in vendor/plugins/hobo-contrib/public.</p>
+<p>The plugin has an install script which will copy some assets to your public directory. The install scripts concatenate all javascripts into hobo-contrib.js and stylesheets into hobo-contrib.css. If you wish to use the individual files, they are available in vendor/plugins/hobo-contrib/public.</p>
+
+<p>If you download a new version of hobo-contrib, please be sure to update your local hobo-contrib.js and hobo-contrib.css with:</p>
+
+<pre><code>rake hobo_contrib:update_assets   </code></pre>
+
+<p>This is also useful if you installed hobo-contrib via git rather than using script/plugin.</p>
 
 <p>You then need to include the taglib, e.g. in application.dryml:</p>
 
 <pre><code>&lt;include src=&quot;hobo-contrib-all&quot; plugin=&quot;hobo-contrib&quot;/&gt;</code></pre>
-
-<p>In the future, some tags may have additional install requirements.</p>
 
 <p>Alternatively, you may wish to only include certain tags. In that case you may use a form such as:</p>
 
@@ -36,8 +40,11 @@
 <pre><code>&lt;extend tag=&quot;page&quot;&gt;
    &lt;old-page merge&gt;
      &lt;append-head:&gt;
-       &lt;javascript name=&quot;select-one-or-field-list&quot; /&gt;
+       &lt;javascript name=&quot;feckless-fieldset&quot; /&gt;
      &lt;/append-head:&gt;
+     &lt;before-app-stylesheet:&gt;   
+       &lt;stylesheet name=&#39;feckless-fieldset.css&#39; /&gt;
+     &lt;/before-app-stylesheet:&gt;
    &lt;/old-page&gt;
 &lt;/extend&gt;</code></pre>
 
@@ -51,25 +58,11 @@
 
 <h2 id='documentation'>Documentation</h2>
 
-<p><a href='http://bryanlarsen.github.com/hobo-contrib/documentation.html'>Auto generated documentation</a>.</p>
+<p><a href='http://bryanlarsen.github.com/hobo-contrib/documentation.html'>Auto generated documentation on GitHub</a>.</p>
+
+<p><a href='http://cookbook.hobocentral.net/plugins/hobo-contrib'>Auto generated documentation on HoboCentral</a></p>
 
 <h2 id='testing'>Testing</h2>
 
 <p>There are some additional tests available for this project in the <a href='http://github.com/tablatom/agility/blob/contrib-test'>contrib-test branch of the agility tutorial on github</a>.</p>
-
-<h2 id='other_hobo_plugins'>Other Hobo Plugins</h2>
-
-<ul>
-<li><a href='http://github.com/tablatom/hoboyui/tree/master'>Hobo YUI</a></li>
-
-<li><a href='http://github.com/tablatom/paperclip_with_hobo/tree/master'>Paperclip with Hobo</a></li>
-</ul>
-
-<h2 id='possibly_out_of_date_plugins'>Possibly out of date plugins</h2>
-
-<ul>
-<li><a href='http://github.com/al2o3cr/hobo_has_many_polymorphs/tree/master'>Hobo has_many_polymporphs</a></li>
-
-<li><a href='http://github.com/hallettj/openid_authentication_for_hobo/tree/master'>open_id_authentication_for_hobo</a></li>
-</ul>
 </body></html>
