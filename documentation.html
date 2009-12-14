@@ -19,6 +19,16 @@
         
           
   <li>
+    <a href="#select-one-or-field-list-taglib">
+      <span>
+        select-one-or-field-list
+      </span>
+    </a>
+  </li>
+
+        
+          
+  <li>
     <a href="#belongs-to-slide-editor-taglib">
       <span>
         belongs-to-slide-editor
@@ -39,9 +49,9 @@
         
           
   <li>
-    <a href="#select-one-or-field-list-taglib">
+    <a href="#feckless-fieldset-taglib">
       <span>
-        select-one-or-field-list
+        feckless-fieldset
       </span>
     </a>
   </li>
@@ -49,6 +59,66 @@
         
       </ul>
       <!-- unfortunately, <repeat> is problematic here -->
+      
+        <div class="taglib" id="select-one-or-field-list-taglib">
+          
+          <ul>
+            
+              
+  <li>
+    <a href="#select-one-or-field-list-tag">
+      <span>
+        select-one-or-field-list
+      </span>
+    </a>
+  </li>
+
+            
+          </ul>
+          
+            <div id="select-one-or-field-list-tag">
+          
+              <h2>select-one-or-field-list</h2>
+              
+              <p>a <em>select-one</em> and a <em>field-list</em> for the same object. If &#8220;New Foo&#8221; is selected, the field-list is displayed, otherwise it is disabled and hidden.</p>
+          
+              
+                <h3>Parameters</h3>
+                
+  <ul>
+    
+      <li>select-one
+        
+  
+
+      </li>
+    
+      <li>field-list
+        
+  
+
+      </li>
+    
+  </ul>
+
+              
+          
+              
+
+              <div class="source">
+                <h3><a href="#">Source</a></h3>
+                <pre><code>&lt;def tag='select-one-or-field-list'&gt;
+  &lt;div class='select-one-or-field-list'&gt;
+    &lt;select-one merge class='select-one-or-field-list-select' param blank-message='&amp;&amp;apos;New
+&amp;apos;+this_field.titleize' include-none/&gt;
+    &lt;field-list param/&gt;
+  &lt;/div&gt;
+&lt;/def&gt;</code></pre>
+              </div>
+          
+            </div>
+          
+        </div>
       
         <div class="taglib" id="belongs-to-slide-editor-taglib">
           
@@ -271,15 +341,64 @@
           
         </div>
       
-        <div class="taglib" id="select-one-or-field-list-taglib">
-          
+        <div class="taglib" id="feckless-fieldset-taglib">
+          <ul>
+<li>This tag is very similar to Rapid&#8217;s <code>field-list</code>. However, instead of rendering a table, it renders what <a href='http://fecklessmind.com/2009/01/23/how-to-reliable-css-forms/'>Anatoli Papirovski calls &#8220;perfect form markup&#8221;</a></li>
+</ul>
+
+<p>It takes the same attributes & parameters as <a href='http://cookbook.hobocentral.net/api_tag_defs/field-list'>field-list</a>, with the addition of a <code>legend</code> parameter and a <code>required</code> attribute.</p>
+
+<p>The <code>required</code> attribute is a list of methods. If the current field is included in the list, the field div has the <code>required</code> class added to it.</p>
+
+<p>The accompanying css allows this fieldset to be rendered in three different ways. You may trigger these by setting a class of <code>horizontal</code>, <code>vertical</code> or <code>inline-vertical</code>. <code>inline-vertical</code> fieldset&#8217;s may also be nested inside of a <code>horizontal</code> fieldset.</p>
+
+<h3 id='example'>Example</h3>
+
+<p>Simple example:</p>
+
+<pre><code>&lt;form&gt;
+  &lt;feckless-fieldset class=&quot;vertical&quot;/&gt;
+&lt;/form&gt;</code></pre>
+
+<p>You can replace the standard field-list in all of your forms with feckless-fieldset:</p>
+
+<pre><code>&lt;extend tag=&quot;field-list&quot;&gt;
+  &lt;feckless-fieldset class=&quot;horizontal&quot; merge/&gt;
+&lt;/extend&gt;    </code></pre>
+
+<p>A more complicated example that you may actually want to steal:</p>
+
+<pre><code>&lt;extend tag=&quot;signup-form&quot; for=&quot;User&quot;&gt;
+  &lt;old-signup-form &gt;
+    &lt;field-list: replace&gt;
+      &lt;fieldset class=&quot;horizontal&quot;&gt;
+        &lt;legend&gt;New Account Registration&lt;/legend&gt;
+        &lt;div class=&quot;field name-field&quot;&gt;
+          &lt;label class=&quot;name-label&quot; for=&quot;user_name&quot;&gt;Name&lt;/label&gt;
+          &lt;feckless-fieldset id=&quot;user_name&quot; class=&quot;inline-vertical&quot; fields=&quot;salutation, first_name, last_name, suffix&quot; required=&quot;first_name, last_name&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field contact-field&quot;&gt;
+          &lt;label class=&quot;contact-label&quot; for=&quot;user_contact&quot;&gt;Contact&lt;/label&gt;
+          &lt;feckless-fieldset id=&quot;user_contact&quot; class=&quot;inline-vertical&quot; fields=&quot;email_address, phone_number&quot; required=&quot;email_address&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field passwords-field&quot;&gt;
+          &lt;label class=&quot;passwords-label&quot; for=&quot;user_contact&quot;&gt;Password&lt;/label&gt;
+          &lt;feckless-fieldset id=&quot;user_passwords&quot; class=&quot;inline-vertical&quot; fields=&quot;password, password_confirmation&quot; required=&quot;password, password_confirmation&quot;&gt;
+            &lt;password-label:&gt;&lt;/password-label:&gt;
+            &lt;password-confirmation-label:&gt;Confirmation&lt;/password-confirmation-label:&gt;
+          &lt;/feckless-fieldset&gt;
+        &lt;/div&gt;
+      &lt;/fieldset&gt;
+    &lt;/field-list:&gt;
+  &lt;/old-signup-form&gt;
+&lt;/extend&gt;</code></pre>
           <ul>
             
               
   <li>
-    <a href="#select-one-or-field-list-tag">
+    <a href="#feckless-fieldset-tag">
       <span>
-        select-one-or-field-list
+        feckless-fieldset
       </span>
     </a>
   </li>
@@ -287,24 +406,60 @@
             
           </ul>
           
-            <div id="select-one-or-field-list-tag">
+            <div id="feckless-fieldset-tag">
           
-              <h2>select-one-or-field-list</h2>
+              <h2>feckless-fieldset</h2>
               
-              <p>a <em>select-one</em> and a <em>field-list</em> for the same object. If &#8220;New Foo&#8221; is selected, the field-list is displayed, otherwise it is disabled and hidden.</p>
+              <ul>
+<li>This tag is very similar to Rapid&#8217;s <code>field-list</code>. However, instead of rendering a table, it renders what <a href='http://fecklessmind.com/2009/01/23/how-to-reliable-css-forms/'>Anatoli Papirovski calls &#8220;perfect form markup&#8221;</a></li>
+</ul>
+
+<p>It takes the same attributes & parameters as <a href='http://cookbook.hobocentral.net/api_tag_defs/field-list'>field-list</a>, with the addition of a <code>legend</code> parameter and a <code>required</code> attribute.</p>
+
+<p>The <code>required</code> attribute is a list of methods. If the current field is included in the list, the field div has the <code>required</code> class added to it.</p>
+
+<p>The accompanying css allows this fieldset to be rendered in three different ways. You may trigger these by setting a class of <code>horizontal</code>, <code>vertical</code> or <code>inline-vertical</code>. <code>inline-vertical</code> fieldset&#8217;s may also be nested inside of a <code>horizontal</code> fieldset.</p>
           
               
                 <h3>Parameters</h3>
                 
   <ul>
     
-      <li>select-one
+      <li>legend
         
   
 
       </li>
     
-      <li>field-list
+      <li>#{field_method}-label
+        
+  
+
+      </li>
+    
+      <li>#{field_method}-view
+        
+  <ul>
+    
+      <li>view
+        
+  <ul>
+    
+      <li>#{field_method}-tag
+        
+  
+
+      </li>
+    
+  </ul>
+
+      </li>
+    
+  </ul>
+
+      </li>
+    
+      <li>#{field_method}-help
         
   
 
@@ -314,16 +469,73 @@
 
               
           
-              
+              <h3 id='example'>Example</h3>
+
+<p>Simple example:</p>
+
+<pre><code>&lt;form&gt;
+  &lt;feckless-fieldset class=&quot;vertical&quot;/&gt;
+&lt;/form&gt;</code></pre>
+
+<p>You can replace the standard field-list in all of your forms with feckless-fieldset:</p>
+
+<pre><code>&lt;extend tag=&quot;field-list&quot;&gt;
+  &lt;feckless-fieldset class=&quot;horizontal&quot; merge/&gt;
+&lt;/extend&gt;    </code></pre>
+
+<p>A more complicated example that you may actually want to steal:</p>
+
+<pre><code>&lt;extend tag=&quot;signup-form&quot; for=&quot;User&quot;&gt;
+  &lt;old-signup-form &gt;
+    &lt;field-list: replace&gt;
+      &lt;fieldset class=&quot;horizontal&quot;&gt;
+        &lt;legend&gt;New Account Registration&lt;/legend&gt;
+        &lt;div class=&quot;field name-field&quot;&gt;
+          &lt;label class=&quot;name-label&quot; for=&quot;user_name&quot;&gt;Name&lt;/label&gt;
+          &lt;feckless-fieldset id=&quot;user_name&quot; class=&quot;inline-vertical&quot; fields=&quot;salutation, first_name, last_name, suffix&quot; required=&quot;first_name, last_name&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field contact-field&quot;&gt;
+          &lt;label class=&quot;contact-label&quot; for=&quot;user_contact&quot;&gt;Contact&lt;/label&gt;
+          &lt;feckless-fieldset id=&quot;user_contact&quot; class=&quot;inline-vertical&quot; fields=&quot;email_address, phone_number&quot; required=&quot;email_address&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field passwords-field&quot;&gt;
+          &lt;label class=&quot;passwords-label&quot; for=&quot;user_contact&quot;&gt;Password&lt;/label&gt;
+          &lt;feckless-fieldset id=&quot;user_passwords&quot; class=&quot;inline-vertical&quot; fields=&quot;password, password_confirmation&quot; required=&quot;password, password_confirmation&quot;&gt;
+            &lt;password-label:&gt;&lt;/password-label:&gt;
+            &lt;password-confirmation-label:&gt;Confirmation&lt;/password-confirmation-label:&gt;
+          &lt;/feckless-fieldset&gt;
+        &lt;/div&gt;
+      &lt;/fieldset&gt;
+    &lt;/field-list:&gt;
+  &lt;/old-signup-form&gt;
+&lt;/extend&gt;</code></pre>
 
               <div class="source">
                 <h3><a href="#">Source</a></h3>
-                <pre><code>&lt;def tag='select-one-or-field-list'&gt;
-  &lt;div class='select-one-or-field-list'&gt;
-    &lt;select-one merge class='select-one-or-field-list-select' param blank-message='&amp;&amp;apos;New
-&amp;apos;+this_field.titleize' include-none/&gt;
-    &lt;field-list param/&gt;
-  &lt;/div&gt;
+                <pre><code>&lt;def attrs='tag, no-edit, required' tag='feckless-fieldset'&gt;
+  &lt;% tag ||= scope.in_form ? &quot;input&quot; : &quot;view&quot;; no_edit ||= &quot;skip&quot; -%&gt;
+  &lt;% required ||= &quot;&quot; ; required = comma_split(required.gsub('-', '_')) -%&gt;
+  &lt;fieldset class='feckless-fields' merge-attrs='&amp;attributes - attrs_for(:with_fields)'&gt;
+    &lt;legend param if='&amp;all_parameters[:legend]'/&gt;
+    &lt;with-fields merge-attrs='&amp;attributes &amp; attrs_for(:with_fields)'&gt;
+    &lt;% field_name = this_field_name 
+       input_attrs = {:no_edit =&gt; no_edit} if tag == &quot;input&quot; &amp;&amp; no_edit == &quot;disable&quot;
+       field_method = this_field.to_s.sub('?', '')
+       id_for_this = param_name_for_this.gsub('[', '_').gsub(']', '')
+    -%&gt;
+      &lt;div class='field #{field_method}-field #{&amp;apos;required&amp;apos; if required.include?(field_method)} ' unless='&amp;tag == &amp;apos;input&amp;apos; &amp;&amp; no_edit == &amp;apos;skip&amp;apos; &amp;&amp; !can_edit?'&gt;
+        &lt;label param='#{field_method}-label' unless='&amp;field_name.blank?' for='&amp;id_for_this'&gt;
+          &lt;%= field_name %&gt;
+        &lt;/label&gt;
+        &lt;do param='#{field_method}-view'&gt;
+          &lt;do param='view'&gt;&lt;call-tag tag='&amp;tag' param='#{field_method}-tag' merge-attrs='&amp;input_attrs'/&gt;&lt;/do&gt;
+        &lt;/do&gt;
+        &lt;span class='input-help' param='#{field_method}-help' if='&amp;tag.to_sym == :input &amp;&amp; !this_field_help.blank?'&gt;
+          &lt;%= this_field_help %&gt;
+        &lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/with-fields&gt;
+  &lt;/fieldset&gt;
 &lt;/def&gt;</code></pre>
               </div>
           
